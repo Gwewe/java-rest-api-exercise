@@ -47,16 +47,25 @@ public class ListIOUService implements IOUService {
             return iouRepository.save(iou);
         } 
         catch (IllegalArgumentException e) {
-            System.err.println("Failed to create the IOU");
+            System.err.println("Failed to create the IOU.");
             return null;
         }
     }
 
 
-    /**@Override
+    @Override
     public updateIOU(UUID id, IOU updatedIOU) {
+        updateIOU.id = this.id;
+        try{
+            return iouRepository.getIOU(updateIOU);
+
+        }
+        catch (NoSuchELementException e){
+            System.err.println("Failed to update the IOU : There is no such element");
+            return null;
+        }
         
-    }**/
+    }
 
 
 }

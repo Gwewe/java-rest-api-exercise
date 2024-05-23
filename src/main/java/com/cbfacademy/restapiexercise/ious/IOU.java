@@ -5,8 +5,8 @@ import java.time.Instant;
 import java.util.UUID;
 
 public class IOU {
-    private String borrower;
-    private String lender;
+    private final String borrower;
+    private final String lender;
     private BigDecimal amount;
     private Instant dateTime;
 
