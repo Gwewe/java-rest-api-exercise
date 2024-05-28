@@ -5,49 +5,56 @@ import java.time.Instant;
 import java.util.UUID;
 
 public class IOU {
+    private final UUID id;
     private final String borrower;
     private final String lender;
     private BigDecimal amount;
     private Instant dateTime;
 
 
-    public IOU(String borrower, String lender, BigDecimal amount, Instant dateTime) {
-        //constructor that should generate a new UUID, use the documentation to learn how to generate a random value.
+    public IOU(UUID id, String borrower, String lender, BigDecimal amount, Instant dateTime) {
+        this.id = id;
         this.borrower = borrower;
         this.lender = lender;
         this.amount = amount;
         this.dateTime = dateTime;
-
     }
-
-     
-    final UUID id() {
+    
+    public UUID getId() {
         //unique identifier for the IOU
-        return UUID.randomUUID();
+        return id;
     }
     
     
-    String borrower() {
-        return this.borrower;
+    public String getBorrower() {
+        return borrower;
         //name of the borrower.
     }
         
     
-    String lender() {
-        return this.lender;
+    public String getLender() {
+        return lender;
         //name of lender
 
     }
     
-    BigDecimal amount() {
+    public BigDecimal getAmount() {
         //amount covered by IOU
-        return this.amount;
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
     
     
-    Instant dateTime() {
+    public Instant getdateTime() {
         //date and time of IOU being issued
-        return this.dateTime;
+        return dateTime;
+    }
+
+    public void setDateTime(Instant dateTime){
+        this.dateTime = dateTime;
     }
 
 }

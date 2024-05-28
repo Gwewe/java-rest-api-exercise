@@ -54,17 +54,27 @@ public class ListIOUService implements IOUService {
 
 
     @Override
-    public updateIOU(UUID id, IOU updatedIOU) {
-        updateIOU.id = this.id;
-        try{
-            return iouRepository.getIOU(updateIOU);
+    public IOU updateIOU(UUID id, IOU updatedIOU) {
+        for(int i = 0; i < ious.size(); i++){
+            if (ious.get(i).getId().equals(id)){
+                ious.set(i, updatedIOU);
+                return updatedIOU;
+            }
+        }
+        System.err.println("No Such Element Exception: Failed to update the IOU.");
+        return null;
+    }
 
+
+
+    @Override
+    public void deleteIOU(UUID id) {
+        for(int i = 0; i < ious.size(); i++){
+            if (ious.get(i).getId().equals(id)){
+                ious.remove(i);
+            } 
         }
-        catch (NoSuchELementException e){
-            System.err.println("Failed to update the IOU : There is no such element");
-            return null;
-        }
-        
+        System.err.println("No Such Element Exception: Failed to update the IOU.");
     }
 
 
