@@ -4,12 +4,26 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "ious")
+
 public class IOU {
+    /**@Id
+    @GeneratedValue(strategy = GenerationType.UUID) */
     private final UUID id;
     private final String borrower;
     private final String lender;
     private BigDecimal amount;
     private Instant dateTime;
+
+    /** default constructor
+    public IOU() {
+        this(null, null, BigDecimal.ZERO, Instant.now());
+      }*/
+    
 
 
     public IOU(UUID id, String borrower, String lender, BigDecimal amount, Instant dateTime) {
