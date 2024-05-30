@@ -5,24 +5,27 @@ import java.time.Instant;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ious")
 
 public class IOU {
-    /**@Id
-    @GeneratedValue(strategy = GenerationType.UUID) */
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private final UUID id;
-    private final String borrower;
-    private final String lender;
+    private String borrower;
+    private String lender;
     private BigDecimal amount;
     private Instant dateTime;
 
-    /** default constructor
-    public IOU() {
-        this(null, null, BigDecimal.ZERO, Instant.now());
-      }*/
+    //default constructor
+    // public IOU() {
+    //     this(null, null, BigDecimal.ZERO, Instant.now());
+    //   }
     
 
 
@@ -44,12 +47,20 @@ public class IOU {
         return borrower;
         //name of the borrower.
     }
+
+    public void setBorrower(String borrower){
+        this.borrower = borrower;
+    }
         
     
     public String getLender() {
         return lender;
         //name of lender
 
+    }
+
+    public void setLender( String lender){
+        this.lender = lender;
     }
     
     public BigDecimal getAmount() {
